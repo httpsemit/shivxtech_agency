@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-primary: #0F172A;
+  --color-surface: #1E293B;
+  --color-surface-raised: #2D3E55;
+  --color-accent: #00E1FF;
+  --color-accent-hover: #00C4DF;
+  --color-accent-glow: rgba(0, 225, 255, 0.25);
+  --color-border: #334155;
+  --color-border-subtle: #1E293B;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #CBD5E1;
+  --color-text-muted: #94A3B8;
+  --color-text-faint: #64748B;
+  --color-text-disabled: #475569;
+  --color-success: #22C55E;
+  --color-error: #EF4444;
+  --color-warning: #FBBF24;
+  --color-info: #0EA5E9;
+  --color-whatsapp: #25D366;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* ============================================
+   BASE RESET & BODY
+   ============================================ */
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--color-primary);
+    color: var(--color-text-secondary);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--color-primary); }
+  ::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-text-faint); }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  ::selection {
+    background-color: rgba(0, 225, 255, 0.3);
+    color: white;
+  }
+}
+
+/* ============================================
+   REUSABLE COMPONENT CLASSES
+   ============================================ */
+@layer components {
+  /* Eyebrow label */
+  .eyebrow {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  /* Hero title */
+  .hero-title {
+    font-size: clamp(36px, 5.5vw, 56px);
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.1;
+    color: white;
+  }
+
+  /* Accent text gradient */
+  .accent-text {
+    color: var(--color-accent);
+    background: linear-gradient(135deg, #00E1FF, #007BFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Card */
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card:hover {
+    border-color: rgba(0, 225, 255, 0.5);
+    box-shadow: 0 0 0 1px rgba(0, 225, 255, 0.1),
+                0 8px 32px -8px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* Featured card */
+  .card-featured {
+    background: linear-gradient(135deg, #1E293B 0%, #163654 100%);
+    border: 1.5px solid var(--color-accent);
+    border-radius: 16px;
+    box-shadow: 0 0 24px -8px rgba(0, 225, 255, 0.2);
+  }
+
+  /* Icon containers */
+  .icon-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: rgba(0, 225, 255, 0.12);
+    border: 1px solid rgba(0, 225, 255, 0.15);
+  }
+
+  .icon-box-sm { width: 40px; height: 40px; }
+  .icon-box-md { width: 48px; height: 48px; }
+  .icon-box-lg { width: 56px; height: 56px; }
+
+  /* Section padding */
+  .section {
+    padding: 80px 0;
+  }
+
+  @media (min-width: 768px) {
+    .section { padding: 100px 0; }
+  }
+
+  @media (min-width: 1024px) {
+    .section { padding: 120px 0; }
+  }
+
+  /* Blue glow */
+  .glow-blue {
+    background: radial-gradient(circle, rgba(0, 225, 255, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  /* Section border */
+  .section-divider {
+    border-top: 1px solid rgba(30, 41, 59, 0.8);
+  }
+}
